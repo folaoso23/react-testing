@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-
-
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import CarGiver from './CarGiver';
 
 class GiftList extends Component {
 
@@ -16,37 +16,13 @@ class GiftList extends Component {
         // this.setGift = this.setGift.bind(this);
     }
 
-
-
-    setRecipient = (event) => {
-        this.setState({recipient: event.target.value});
-    };
-
-    setGift = (event) => {
-        this.setState({gift: event.target.value});
-    };
-
-    addRecipientAndGift = () => {
-        this.setState({recipientGiftList: this.state.recipientGiftList.concat(this.state.recipient + " | " + this.state.gift) });
-        this.setState({recipient: "", gift: ""});
-    };
-
     render() {
-
-        const items = this.state.recipientGiftList.map(function(item){
-            return <li value={item}> {item} </li>;
-        });
-
         return (
             <div>
-                <h1 data-app-title>Gift Giver</h1>
-                <input type="text" placeholder="name of gift recipient" onChange={this.setRecipient} id="data-recipient-input-box"
-                       value={this.state.recipient}/>
-                <input type="text" placeholder="what's the gift?" onChange={this.setGift} id="data-gift-input-box"
-                       value={this.state.gift}/>
-                <button id="data-add-gift-button" disabled={!this.state.recipient || !this.state.gift}
-                onClick={this.addRecipientAndGift}>Add Gift</button>
-                <ul id="data-recipient-gift-list">{items}</ul>
+                <Router>
+                    <Route path='/car-giver' component={CarGiver} />
+                    <Link to='/car-giver'>Car Giver</Link>
+                </Router>
             </div>
         );
     }
