@@ -146,13 +146,6 @@ describe("GiftList", () => {
                 }
             };
 
-            nameInputBox.simulate('change', nameInputEvent);
-            giftInputBox.simulate('change', giftInputEvent);
-
-            addGiftButton = wrapper.find("#data-add-gift-button");
-            addGiftButton.simulate('click');
-
-
             const nameInputEvent2 = {
                 target: {
                     value: "Oso"
@@ -165,6 +158,9 @@ describe("GiftList", () => {
                 }
             };
 
+
+            nameInputBox.simulate('change', nameInputEvent);
+            giftInputBox.simulate('change', giftInputEvent);
             nameInputBox.simulate('change', nameInputEvent2);
             giftInputBox.simulate('change', giftInputEvent2);
 
@@ -173,7 +169,7 @@ describe("GiftList", () => {
             var recipientGiftList = wrapper.find("#data-recipient-gift-list");
 
             expect(recipientGiftList.childAt(0).props().value).toEqual("Fola | Skittles");
-            expect(recipientGiftList.childAt(2).props().value).toEqual("Oso | Warheads");
+            expect(recipientGiftList.childAt(1).props().value).toEqual("Oso | Warheads");
 
 
 
